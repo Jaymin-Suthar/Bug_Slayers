@@ -1,0 +1,129 @@
+:root {
+    --primary: #0f172a;    /* Deep Navy */
+    --accent: #f97316;     /* Saffron */
+    --success: #10b981;    /* Green */
+    --bg-light: #f8fafc;
+    --border: #e2e8f0;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: var(--bg-light);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Modern dashboards don't scroll the whole page */
+}
+
+/* NAVBAR */
+.navbar {
+    background: var(--primary);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.logo-text { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; }
+.logo-text span { color: var(--accent); }
+.mission-tag { font-size: 0.85rem; opacity: 0.8; font-weight: 600; text-transform: uppercase; }
+
+/* WORKSPACE LAYOUT */
+.workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two perfect halves */
+    gap: 1.5rem;
+    padding: 1.5rem;
+    flex-grow: 1;
+    height: calc(100vh - 60px);
+}
+
+.panel {
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-header h2 { font-size: 1.25rem; color: var(--primary); }
+.panel-header p { font-size: 0.9rem; color: #64748b; margin-top: 4px; }
+
+/* FORM & INPUTS */
+.panel-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+textarea {
+    flex-grow: 1;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    background: #fdfdfd;
+    font-size: 0.95rem;
+    resize: none;
+    transition: 0.3s;
+}
+textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1); }
+
+.upload-zone {
+    margin: 1rem 0;
+    border: 2px dashed #cbd5e0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.upload-zone:hover { border-color: var(--accent); background: #fffaf5; }
+
+/* BUTTONS */
+.control-footer { display: flex; gap: 1rem; align-items: flex-end; }
+.select-box { flex: 1; }
+select { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1.5px solid var(--border); margin-top: 5px; }
+
+.main-btn {
+    flex: 1.5;
+    background: var(--primary);
+    color: white;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.main-btn:hover { background: #1e293b; transform: translateY(-2px); }
+
+/* OUTPUT PANEL RESULTS */
+.result-container { flex-grow: 1; padding: 1.5rem; background: #fcfcfc; display: flex; align-items: center; justify-content: center; }
+.result-box { padding: 1.5rem; background: #f0f9ff; border-radius: 12px; border-left: 5px solid var(--accent); width: 100%; height: 100%; }
+.summary-badge { background: var(--accent); color: white; padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 1rem; }
+
+/* LOADER */
+.loader-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    display: none; align-items: center; justify-content: center; z-index: 1000;
+}
+.loader-card { background: white; padding: 2.5rem; border-radius: 24px; text-align: center; }
+.spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* RESPONSIVENESS */
+@media (max-width: 900px) {
+    .workspace { grid-template-columns: 1fr; overflow-y: auto; height: auto; }
+}
