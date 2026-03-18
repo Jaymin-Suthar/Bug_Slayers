@@ -80,12 +80,10 @@
                     <p>Simplified insights will appear here...</p>
                 </div>
 
-                {% if translated_text %}
-                <div class="result-box active">
+                <div class="result-box" id="resultBox" style="display:none;">
                     <div class="summary-badge">AI-Simplified Summary</div>
-                    <p id="resultText">{{ translated_text }}</p>
+                    <p id="resultText"></p>
                 </div>
-                {% endif %}
             </div>
 
             <div class="panel-footer">
