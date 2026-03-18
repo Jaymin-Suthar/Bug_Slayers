@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JanBhasha AI | Viksit Bharat 2047</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Hind:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="logo-icon">🇮🇳</span>
+            <span class="logo-text">JanBhasha <span>AI</span></span>
+        </div>
+        <div class="nav-center">
+            <span class="mission-tag">Vision Viksit Bharat 2047</span>
+        </div>
+        <div class="nav-right">
+            <span class="status-badge">Pillar 1: Digital Empowerment</span>
+        </div>
+    </nav>
+
+    <main class="workspace">
+        
+        <section class="panel input-panel">
+            <div class="panel-header">
+                <h2>Import Policy</h2>
+                <p>Simplify complex government documents instantly.</p>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data" id="form" class="panel-content">
+                <div class="input-wrapper">
+                    <label for="text">Direct Text Input</label>
+                    <textarea id="text" name="text" placeholder="Paste the complex 'Legalese' or policy text here..."></textarea>
+                    <div class="counter" id="counter">0 characters</div>
+                </div>
+
+                <div class="divider"><span>OR</span></div>
+
+                <div class="upload-zone" id="uploadBox">
+                    <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" hidden>
+                    <div class="upload-info">
+                        <span class="icon">📂</span>
+                        <p id="fileText">Drop Policy PDF Here</p>
+                        <small>Support for official GOI documents</small>
+                    </div>
+                </div>
+
+                <div class="control-footer">
+                    <div class="select-box">
+                        <label>Target Language</label>
+                        <select name="language" id="language">
+                            <option value="hi">Hindi (हिन्दी)</option>
+                            <option value="gu">Gujarati (ગુજરાતી)</option>
+                            <option value="mr">Marathi (मराठी)</option>
+                            <option value="ta">Tamil (தமிழ்)</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="submitBtn" class="main-btn">
+                        Simplify & Translate 🚀
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel output-panel">
+            <div class="panel-header">
+                <h2>Simplified View</h2>
+                <div class="output-actions">
+                    <button class="action-btn" onclick="copyResult()">📋 Copy</button>
+                    <button class="action-btn voice" onclick="speakResult()">🔊 Listen</button>
+                </div>
+            </div>
+
+            <div class="result-container">
+                <div class="empty-state" id="emptyState">
+                    <div class="pulse-icon">✨</div>
+                    <p>Simplified insights will appear here...</p>
+                </div>
+
+                {% if translated_text %}
+                <div class="result-box active">
+                    <div class="summary-badge">AI-Simplified Summary</div>
+                    <p id="resultText">{{ translated_text }}</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="panel-footer">
+                <p>Ensuring transparency and ease of living for every citizen.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="loader-overlay" id="loader">
+        <div class="loader-card">
+            <div class="spinner"></div>
+            <h3>Analyzing Policy...</h3>
+            <p>Breaking down complex jargon into simple regional terms.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
